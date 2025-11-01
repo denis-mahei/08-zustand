@@ -1,4 +1,4 @@
-import { NoteDraft } from "../types/note";
+import { NoteDraft } from "@/types/note";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

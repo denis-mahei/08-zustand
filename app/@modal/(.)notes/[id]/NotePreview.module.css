@@ -79,9 +79,9 @@
   padding: 8px 14px;
   font-size: 14px;
   font-weight: 500;
-  color: #2a5d9f;
-  background-color: #e7f1ff;
-  border: 1px solid #c5dcfa;
+  color: #fdfdfd;
+  background-color: #1e1e1e;
+  border: none;
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
@@ -89,8 +89,7 @@
 }
 
 .backBtn:hover {
-  background-color: #d6e7ff;
-  color: #1f4a7c;
+  background-color: #414141;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }

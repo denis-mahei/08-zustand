@@ -21,22 +21,22 @@
   font-weight: 500;
   padding: 10px 18px;
   border-radius: 8px;
-  background-color: #e7f1ff;
-  color: #2a5d9f;
-  border: 1px solid #c5dcfa;
+  background-color: #1e1e1e;
+  color: #f5f5f5;
+  border: 1px solid #444;
   transition: all 0.25s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
 }
 
 .menuLink:hover {
-  background-color: #d6e7ff;
-  color: #1f4a7c;
+  background-color: #333;
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .menuLink.active {
-  background-color: #b6d4fe;
-  color: #1f3d7a;
+  background-color: #333;
+  color: #ffffff;
   font-weight: 600;
 }

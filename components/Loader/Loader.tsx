@@ -1,18 +1,18 @@
-import { ClipLoader } from "react-spinners";
+import { BeatLoader } from "react-spinners";
 import { useState } from "react";
 import type { CSSProperties } from "react";
 
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
-  borderColor: "red",
+  borderColor: "#212121",
 };
 
 const Loader = () => {
   const [color] = useState("#ffffff");
   return (
     <>
-      <ClipLoader
+      <BeatLoader
         color={color}
         cssOverride={override}
         size={150}

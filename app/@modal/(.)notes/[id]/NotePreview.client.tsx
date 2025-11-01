@@ -7,11 +7,12 @@ import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import css from "./NotePreview.module.css";
 import { useRouter } from "next/navigation";
 import Modal from "@/components/Modal/Modal";
+import { format } from 'date-fns';
 const NotePreview = () => {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
   console.log(id);
-  const { data, isLoading, isError } = useQuery({
+  const { data: note, isLoading, isError } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
@@ -21,15 +22,13 @@ const NotePreview = () => {
     router.back();
   };
 
-  const formattedDate = data
-    ? data.updatedAt
-      ? `Updated at: ${data.updatedAt}`
-      : `Created at: ${data.createdAt}`
+  const formattedDate = note
+    ? format(new Date(note.updatedAt || note.createdAt), "PPP, p")
     : "";
 
   if (isLoading) return <Loader />;
   if (isError) return <ErrorMessage />;
-  if (!data) return null;
+  if (!note) return null;
   return (
     <Modal onClose={handleClick}>
       <div className={css.container}>
@@ -38,9 +37,9 @@ const NotePreview = () => {
             <button onClick={handleClick} className={css.backBtn}>
               Go Back
             </button>
-            <h2>{data.title}</h2>
+            <h2>{note.title}</h2>
           </div>
-          <p className={css.content}>{data.content}</p>
+          <p className={css.content}>{note.content}</p>
           <p className={css.date}>{formattedDate}</p>
         </div>
       </div>

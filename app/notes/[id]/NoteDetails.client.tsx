@@ -5,12 +5,13 @@ import { useParams } from "next/navigation";
 import Loader from "@/components/Loader/Loader";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import { useRouter } from "next/navigation";
+import { format } from "date-fns";
 
 import css from "./NoteDetails.module.css";
 
 const NoteDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading, isError } = useQuery({
+  const { data: note, isLoading, isError } = useQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
@@ -22,23 +23,21 @@ const NoteDetails = () => {
     router.back();
   };
 
-  const formattedDate = data
-    ? data.updatedAt
-      ? `Updated at: ${data.updatedAt}`
-      : `Created at: ${data.createdAt}`
+  const formattedDate = note
+    ? format(new Date(note.updatedAt || note.createdAt), "PPP, p")
     : "";
 
   if (isLoading) return <Loader />;
   if (isError) return <ErrorMessage />;
-  if (!data) return null;
+  if (!note) return null;
   return (
     <div className={css.container}>
       <div className={css.item}>
         <div className={css.header}>
           <button onClick={handleClick}>Go Back</button>
-          <h2>{data.title}</h2>
+          <h2>{note.title}</h2>
         </div>
-        <p className={css.content}>{data.content}</p>
+        <p className={css.content}>{note.content}</p>
         <p className={css.date}>{formattedDate}</p>
       </div>
     </div>

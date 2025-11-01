@@ -1,11 +1,12 @@
 "use client";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import css from "./NoteForm.module.css";
 import { createNote } from "@/lib/api";
-import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { useDraftNote } from "@/lib/store/noteStore";
 import { ChangeEvent } from "react";
+import toast from "react-hot-toast";
+
+import css from "./NoteForm.module.css";
 
 type CreateNote = {
   title: string;
@@ -24,7 +25,6 @@ const NoteForm = () => {
       toast.success("You have successfully created a new note!");
       clearDraft();
       router.push("/notes/filter/All");
-      //для того щоб нотатки обновились
     },
     onError: () => {
       toast.error("Something went wrong...try again.");

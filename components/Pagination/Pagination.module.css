@@ -2,10 +2,9 @@
   display: flex;
   justify-content: center;
   gap: 4px;
-  margin: 16px 0;
+  margin: 0 16px 0 0;
   list-style: none;
   padding: 0;
-  margin: 0;
 }
 
 .pagination li {
@@ -24,8 +23,11 @@
   width: 100%;
   height: 100%;
   text-decoration: none;
-  color: #0d6efd;
+  color: #e9ecef;
   font-size: 14px;
+    &:hover {
+        color: #1e1e1e;
+    }
 }
 
 .pagination li:hover {
@@ -33,15 +35,14 @@
 }
 
 .pagination li.active:hover {
-  background-color: #0d6efd;
+  background-color: #fdfdfd;
 }
 
 .active {
-  background-color: #0d6efd;
-  border-color: #0d6efd;
+  background-color: #e9ecef;
 }
 
 .active a {
-  color: #fff !important;
+  color: #212121 !important;
   font-weight: 500;
 }
